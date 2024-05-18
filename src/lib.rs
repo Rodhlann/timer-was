@@ -43,9 +43,36 @@ mod tests {
     use super::*;
 
     #[test]
-    fn it_works() {
+    fn test_seconds() {
         let timer = Timer::start();
         std::thread::sleep(Duration::from_secs(1));
+        let end = timer.end(Time::Seconds);
+
+        assert_eq!(end, "1");
+    }
+
+    #[test]
+    fn test_millis() {
+        let timer = Timer::start();
+        std::thread::sleep(Duration::from_millis(1000));
+        let end = timer.end(Time::Seconds);
+
+        assert_eq!(end, "1");
+    }
+
+    #[test]
+    fn test_micros() {
+        let timer = Timer::start();
+        std::thread::sleep(Duration::from_micros(1000000));
+        let end = timer.end(Time::Seconds);
+
+        assert_eq!(end, "1");
+    }
+
+    #[test]
+    fn test_nanos() {
+        let timer = Timer::start();
+        std::thread::sleep(Duration::from_nanos(1000000000));
         let end = timer.end(Time::Seconds);
 
         assert_eq!(end, "1");
