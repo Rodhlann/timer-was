@@ -1,25 +1,26 @@
-use std::time::Instant;
-
 use wasm_bindgen::prelude::*;
+use web_time::Instant;
+mod utils;
 
 #[wasm_bindgen]
 pub enum Time {
     Seconds,
     Millis,
     Micros,
-    Nanos
+    Nanos,
 }
 
 #[wasm_bindgen]
 pub struct Timer {
-    start: Instant
+    start: Instant,
 }
 
 #[wasm_bindgen]
 impl Timer {
     pub fn start() -> Timer {
+        utils::set_panic_hook();
         Timer {
-            start: Instant::now()
+            start: Instant::now(),
         }
     }
 

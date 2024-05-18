@@ -1,21 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Wasm Static Site</title>
-</head>
-<body>
-  <h1>Running WebAssembly on a Static Site</h1>
-  <script type="module">
-    import init, { Timer, Time } from './pkg/timer_wasm.js';
+    <head>
+        <title>Wasm Static Site</title>
+    </head>
+    <body>
+        <h1>Running WebAssembly on a Static Site</h1>
+        <script type="module">
+            import init, { Timer, Time } from "./pkg/timer_wasm.js";
 
-    async function run() {
-      await init();
-      const start = Timer.start();
-      await Promise.resolve((resolve) => setTimeout(resolve, 1000));
-      console.log(timer.end(Time.Seconds));
-    }
+            async function run() {
+                await init();
+                const timer = Timer.start();
+                console.log(timer.end(Time.Millis));
+            }
 
-    run();
-  </script>
-</body>
+            run();
+        </script>
+    </body>
 </html>
